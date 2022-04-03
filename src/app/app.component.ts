@@ -29,7 +29,21 @@ export interface Music {
   Description: string
 }
 
-const poster = {
+export interface Favorites {
+  id: number,
+  Premiere?: string,
+  Starring?: string,
+  Time?: string,
+  Country?: string,
+  Title: string,
+  Poster: string,
+  Description?: string,
+  StageDirector?: string,
+  Directed?: string,
+  Genre?: string,
+}
+
+const poster: any = {
   cinema: [
       {
       id: 1,
@@ -125,42 +139,63 @@ const poster = {
 
 export class AppComponent {
   title = 'Knowledge-verification';
-  myCinema = false;
+
+  myCinema = false;                 //начальное состояние выключателей компонентов
   myPerformance = false;
   myConcert = false;
-  myFavorites = false;
+  myFavorites = false;  
 
-  getCinema() {
+  getCinema() {                     //функция включения компонента Cinema
     this.myCinema = true;
     this.myPerformance = false;
     this.myConcert = false;
     this.myFavorites = false; 
-    console.log(this.myCinema);        
+    this.switch = true;       
   }
 
-  getPerformance() {
+  getPerformance() {              //функция включения компонента Performance
     this.myPerformance = true;
     this.myCinema = false;
     this.myConcert = false;
     this.myFavorites = false;
+    this.switch = true;
   }
 
-  getConcert() {
+  getConcert() {                  //функция включения компонента Concert
     this.myCinema = false;
     this.myPerformance = false;
     this.myConcert = true;
     this.myFavorites = false;
+    this.switch = true;
   }
 
-  getFavorites() {
+  getFavorites() {                ////функция включения компонента Favorites
     this.myCinema = false;
     this.myPerformance = false;
     this.myConcert = false;
     this.myFavorites = true;
+    this.switch = true;
   }
-  
+
+  miniArr = {};                 //массив хранит выбранное событие
+  switch = true;                //состояние переключателя компонентов
+  addItem(newItem: any) {     
+    this.miniArr = newItem;     //функция получения события из компонента
+    this.switch = false;        //и переключения компонентов
+  }
+
+  returnElement(newItem: any) {     
+    this.switch = newItem;        //функция кнопки назад компонента
+  }
+
+  myChosenArray(newItem: any) {         //функция вытаскивает выбранное событие из дочернего элемента  
+    newItem;
+    poster.favorites.push(newItem); 
+  }
+
     movies: Films[] = poster['cinema'];
     theatres: Theatre[] = poster['performance'];
     musics: Music[] = poster['concert'];
+    favorites: Favorites[] = poster['favorites'];
 
 }

@@ -1,16 +1,16 @@
 <div class="out">
     <div>
-        <img class="image2" src='' alt="" />
+        <img class="image2" src={{IChose.Poster}} alt="" />
     </div>
     <div>
-        <div class="divOut"><b>Title:</b> Title</div>
-        <div class="divOut"><b>Genre:</b> Genre</div>
-        <div class="divOut"><b>Starring:</b> Starring</div>
-        <div class="divOut"><b>Country:</b> Country</div>
-        <div class="divOut"><b>Time:</b> Time</div>
-        <div class="divOut"><b>Premiere:</b> Premiere</div>
-        <div class="divOut"><b>Description:</b> Description</div>
-        <div><button (click)="info()" style='font-size: 120%'>Back</button></div>
-        <div><button style='font-size: 120%'>Favorite</button></div>
+        <div class="divOut"><b>Title:</b> {{IChose.Title}}</div>
+        <div *ngIf="IChose.Genre" class="divOut"><b>Genre:</b> {{IChose.Genre}}</div>
+        <div *ngIf="IChose.Starring" class="divOut"><b>Starring:</b> {{IChose.Starring}}</div>
+        <div *ngIf="IChose.Country" class="divOut"><b>Country:</b> {{IChose.Country}}</div>
+        <div *ngIf="IChose.Time" class="divOut"><b>Time:</b> {{IChose.Time}}</div>
+        <div *ngIf="IChose.Premiere" class="divOut"><b>Premiere:</b> {{IChose.Premiere}}</div>
+        <div *ngIf="IChose.Description" class="divOut"><b>Description:</b> {{IChose.Description}}</div>
+        <div><button (click)="comeBack(true)" style='font-size: 120%'>Back</button></div>
+        <div><button (click)="favorites(IChose)"style='font-size: 120%'>Favorite</button></div>
     </div>       
 </div>

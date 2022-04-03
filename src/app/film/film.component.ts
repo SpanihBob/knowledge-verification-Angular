@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Films } from '../app.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { Films } from '../app.component';
   templateUrl: './film.component.html',
   styleUrls: ['./film.component.css']
 })
-export class FilmComponent implements OnInit {
+export class FilmComponent {
   @Input() 'ev': Films;
   @Input() 'index': number;
   
@@ -15,9 +15,9 @@ export class FilmComponent implements OnInit {
     this.onOff = true;
   }
 
-  constructor() { }
+  @Output() newItemEvent = new EventEmitter<any>();
 
-  ngOnInit(): void {
+  addNewItem(value: any) {
+    this.newItemEvent.emit(value);
   }
-
 }

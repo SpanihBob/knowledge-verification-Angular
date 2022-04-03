@@ -2,13 +2,20 @@
     display: flex;
     flex-direction: column;
     border: solid 1px rgb(66, 66, 246);
-    margin: 20px;
+    margin: 20px auto;
     padding: 20px;
+    width: 480px;
+
   
   }
   .image2{
     width: 400px;
+    margin: 40px;
   }
   .divOut{
     margin-top: 10px;
   }
+
+
+
+  

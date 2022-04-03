@@ -7,6 +7,8 @@ import { FilmComponent } from './film/film.component';
 import { TeatrComponent } from './teatr/teatr.component';
 import { MusicComponent } from './music/music.component';
 import { OutputComponent } from './output/output.component';
+import { NewservicesService } from './newservices.service';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
@@ -16,13 +18,14 @@ import { OutputComponent } from './output/output.component';
     TeatrComponent,
     MusicComponent,
     OutputComponent,
+    FavoritesComponent,
     
   ],
   imports: [
     BrowserModule,
     FormsModule
     ],
-  providers: [],
+  providers: [NewservicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

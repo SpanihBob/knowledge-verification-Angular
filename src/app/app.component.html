@@ -27,28 +27,60 @@
       </form>
   </div>
 
-  <div>
-      <div *ngIf="myCinema" class="imageBox">
+  <div *ngIf="switch">
+      <div *ngIf="myCinema">
+        <h3 style="text-align: center;">Cinema</h3> 
+        <div class="imageBox">               
         <app-film 
           *ngFor="let iterCinema of movies; let idxCinema=index" 
           [ev]="iterCinema" 
-          [index]="idxCinema">                
+          [index]="idxCinema"
+          (newItemEvent)="addItem($event)">                          <!-- передаем callback в дочерний компонент -->
         </app-film>
+        </div>
       </div>
 
-      <div *ngIf="myPerformance" class="imageBox">
-        <app-teatr 
+      <div *ngIf="myPerformance">
+        <h3 style="text-align: center;">Performance</h3>
+        <div class="imageBox">
+          <app-teatr 
           *ngFor="let iterPerformance of theatres; let idxPerformance=index" 
           [ev]="iterPerformance" 
-          [index]="idxPerformance">                
+          [index]="idxPerformance"
+          (newItemEvent)="addItem($event)">                
         </app-teatr>
+        </div>
       </div>
 
-      <div *ngIf="myConcert" class="imageBox">
-        <app-music 
+      <div *ngIf="myConcert">        
+      <h3 style="text-align: center;">Concert</h3>
+        <div class="imageBox">
+          <app-music 
           *ngFor="let iterConcert of musics; let idConcert=index" 
           [ev]="iterConcert" 
-          [index]="idConcert">                
+          [index]="idConcert"
+          (newItemEvent)="addItem($event)">                
         </app-music>
+        </div>
       </div>
+
+      <div *ngIf="myFavorites">        
+      <h3 style="text-align: center;">Favorites</h3>
+        <div class="imageBox">
+          <app-favorites 
+          *ngFor="let iterFavor of favorites; let idFavor=index" 
+          [ev]="iterFavor" 
+          [index]="idFavor"
+          (newItemEvent)="addItem($event)">                
+        </app-favorites>
+        </div>
+      </div>
+</div>
+
+<div *ngIf="!switch">
+  <app-output
+  [IChose] = "miniArr"
+  (comeBackEvent)="returnElement($event)"
+  (addToYourFavorites)="myChosenArray($event)">    
+  </app-output>
 </div>

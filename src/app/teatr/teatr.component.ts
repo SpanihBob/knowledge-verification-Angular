@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Theatre } from '../app.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { Theatre } from '../app.component';
   templateUrl: './teatr.component.html',
   styleUrls: ['./teatr.component.css']
 })
-export class TeatrComponent implements OnInit {
+export class TeatrComponent {
   @Input() 'ev': Theatre;
   @Input() 'index': number;
 
@@ -15,9 +15,10 @@ export class TeatrComponent implements OnInit {
     this.onOff = true;    
   }
 
-  constructor() { }
+  @Output() newItemEvent = new EventEmitter<any>();
 
-  ngOnInit(): void {
+  addNewItem(value: any) {
+    this.newItemEvent.emit(value);
   }
 
 }

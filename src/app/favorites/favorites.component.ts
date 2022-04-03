@@ -1,22 +1,25 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { Music } from '../app.component';
+import { Favorites } from '../app.component';
 
 @Component({
-  selector: 'app-music',
-  templateUrl: './music.component.html',
-  styleUrls: ['./music.component.css']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css']
 })
-export class MusicComponent {
-  @Input() 'ev': Music;
+export class FavoritesComponent {
+  @Input() 'ev': Favorites;
   @Input() 'index': number;
+  
   onOff = false;
   info() {
     this.onOff = true;
   }
+
   @Output() newItemEvent = new EventEmitter<any>();
 
   addNewItem(value: any) {
     this.newItemEvent.emit(value);
   }
+  
 
 }
